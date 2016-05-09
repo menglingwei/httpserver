@@ -66,7 +66,7 @@ func startServer(host, certFile, keyFile, dir string, enableLogs, enableCompress
 	hasIndex := utils.Exists(dir + utils.PathSeparator + "index.html")
 
 	// if enable compression then cache gzip files, if this dir doesn't contains an index.html then serve as fileserver
-	serveHandler := iris.StaticHandlerFunc(dir, 1, enableCompression, !hasIndex)
+	serveHandler := iris.StaticHandlerFunc(dir, 0, enableCompression, !hasIndex)
 
 	server.Get("/*filepath", func(ctx *iris.Context) {
 		if len(ctx.Param("filepath")) < 2 && hasIndex {
