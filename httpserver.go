@@ -57,7 +57,7 @@ func run(args cli.Flags) error {
 
 func startServer(host, certFile, keyFile, dir string, enableLogs, enableCompression bool) {
 	server := iris.New()
-	server.Config.Render.Directory = "s0meth1ngthAtitdo3sntex1stsF0rG00dAndBaaaad"
+	server.Config().Render.Directory = "s0meth1ngthAtitdo3sntex1stsF0rG00dAndBaaaad"
 
 	if enableLogs {
 		server.Use(logger.Default())
