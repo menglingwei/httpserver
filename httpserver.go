@@ -58,16 +58,16 @@ func run(args cli.Flags) error {
 
 func startServer(host, certFile, keyFile, dir string, enableLogs, enableCompression bool) {
 	server := iris.New()
-	server.Config().Render.Template.Engine = config.NoEngine
+	server.Config.Render.Template.Engine = config.NoEngine
 
 	if enableLogs {
-		server.Use(logger.Default())
+		server.Use(logger.New(server.Logger))
 	}
 
 	hasIndex := utils.Exists(dir + utils.PathSeparator + "index.html")
 
 	// if enable compression then cache gzip files, if this dir doesn't contains an index.html then serve as fileserver
-	serveHandler := iris.StaticHandlerFunc(dir, 0, enableCompression, !hasIndex)
+	serveHandler := iris.StaticHandler(dir, 0, enableCompression, !hasIndex, nil)
 
 	server.Get("/*filepath", func(ctx *iris.Context) {
 		if len(ctx.Param("filepath")) < 2 && hasIndex {
