@@ -40,7 +40,7 @@ Example:
 
 ## Versioning
 
-Current: **v0.0.1**
+Current: **v0.0.2**
 
 
 Read more about Semantic Versioning 2.0.0

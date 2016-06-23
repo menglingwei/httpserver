@@ -25,16 +25,16 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-// Package main v0.0.1
+// Package main v0.0.2
 package main
 
 import (
 	"os"
 
+	"github.com/iris-contrib/middleware/logger"
 	"github.com/kataras/cli"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/config"
-	"github.com/kataras/iris/middleware/logger"
 	"github.com/kataras/iris/utils"
 )
 
