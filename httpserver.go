@@ -34,7 +34,6 @@ import (
 	"github.com/iris-contrib/middleware/logger"
 	"github.com/kataras/cli"
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/config"
 	"github.com/kataras/iris/utils"
 )
 
@@ -58,7 +57,7 @@ func run(args cli.Flags) error {
 
 func startServer(host, certFile, keyFile, dir string, enableLogs, enableCompression bool) {
 	server := iris.New()
-	server.Config.Render.Template.Engine = config.NoEngine
+	server.Config.DisableTemplateEngines = true
 
 	if enableLogs {
 		server.Use(logger.New(server.Logger))
