@@ -60,7 +60,7 @@ func startServer(host, certFile, keyFile, dir string, enableLogs, enableCompress
 	server.Config.DisableTemplateEngines = true
 
 	if enableLogs {
-		server.Use(logger.New(server.Logger))
+		server.Use(logger.New())
 	}
 
 	hasIndex := utils.Exists(dir + utils.PathSeparator + "index.html")
